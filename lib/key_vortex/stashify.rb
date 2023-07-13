@@ -2,8 +2,8 @@
 
 require_relative "stashify/version"
 
-module KeyVortex
-  module Stashify
+class KeyVortex
+  class Stashify
     class Error < StandardError; end
     # Your code goes here...
   end
