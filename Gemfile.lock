@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    key_vortex-stashify (0.2.4)
+    key_vortex-stashify (0.2.5)
       key-vortex (~> 0.2.4)
       stashify (~> 3.2.1)
 
