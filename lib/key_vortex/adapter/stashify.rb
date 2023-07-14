@@ -9,6 +9,10 @@ require "stashify/file"
 class KeyVortex
   class Adapter
     class Stashify < KeyVortex::Adapter
+      def self.build(stashify:)
+        new(stashify)
+      end
+
       def initialize(stashify)
         super()
         @stashify = stashify
@@ -35,3 +39,5 @@ class KeyVortex
     end
   end
 end
+
+KeyVortex.register(KeyVortex::Adapter::Stashify)

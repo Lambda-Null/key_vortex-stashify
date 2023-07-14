@@ -10,15 +10,12 @@ RSpec.describe KeyVortex::Adapter::Stashify do
   around(:each) do |s|
     Dir.mktmpdir do |dir|
       @dir = dir
+      @stashify = Stashify::Directory::Local.new(path: @dir)
       s.run
     end
   end
 
-  subject do
-    KeyVortex::Adapter::Stashify.new(
-      Stashify::Directory::Local.new(path: @dir)
-    )
-  end
+  subject { KeyVortex::Adapter::Stashify.new(@stashify) }
 
-  it_behaves_like "an adapter"
+  it_behaves_like "an adapter", stashify: @stashify
 end
