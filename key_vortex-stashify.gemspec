@@ -29,7 +29,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   # Uncomment to register a new dependency of your gem
-  spec.add_dependency "key-vortex", "~> 0.2.4"
+  spec.add_dependency "key-vortex", "~> 1.0.0"
   spec.add_dependency "stashify", "~> 3.2.1"
 
   # For more information and examples about making a new gem, checkout our

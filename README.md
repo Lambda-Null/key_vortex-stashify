@@ -1,8 +1,6 @@
 # KeyVortex::Stashify
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/key_vortex/stashify`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This is an implementation of an adapter for [KeyVortex](https://github.com/lambda-Null/key-vortex/) allowing use of any file storage provider via [Stashify](https://github.com/Lambda-Null/stashify).
 
 ## Installation
 
@@ -22,7 +20,25 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+require "key_vortex/adapter/stashify"
+require "stashify/directory/local"
+require "key_vortex/record"
+
+class ExampleRecord < KeyVortex::Record
+  field :a, String, length: 100
+end
+
+> vortex = KeyVortex.vortex(:stashify, ExampleRecord, stashify: Stashify::Directory::Local.new(path: "/tmp/demo"))
+=>
+#<KeyVortex:0x0000557c90244b88
+> vortex.save(ExampleRecord.new(key: "foo", a: "bar"))
+> vortex.find("foo")
+=> #<ExampleRecord:0x0000557c90ff5868 @values={:key=>"foo", :a=>"bar"}>
+> vortex.remove("foo")
+> vortex.find("foo")
+=> nil
+```
 
 ## Development
 
